@@ -1,1 +1,196 @@
+/* choose one of the following */
+
 @import "tailwindcss";
+/* @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap'); */
+@import "flowbite/src/themes/default";
+@import url('https://fonts.googleapis.com/css2?family=Geist+Pixel&display=swap');
+
+/* MINIMAL THEME
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import "flowbite/src/themes/minimal";
+*/
+
+/* ENTERPRISE THEME
+@import url('https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import "flowbite/src/themes/enterprise";
+*/
+
+/* PLAYFUL THEME
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
+@import "flowbite/src/themes/playful";
+*/
+
+/* MONO THEME
+@import "flowbite/src/themes/mono";
+*/
+
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+/* input.css */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Font Setup */
+  --font-sans: "Geist Pixel", sans-serif;
+  --font-mono:"Geist Pixel", sans-serif;
+  
+  /* Color Variables */
+  --color-footer-bg: #040911;
+  
+  /* ADD THESE TWO LINES: */
+  --color-moss-light: #708238;
+  --color-moss-dark: #006D4C;
+}
+
+.ring-green-main {
+  --tw-ring-color:#708238;
+}
+
+.border-green {
+  border-color: #708238;
+}
+
+.max-w-lg {
+    max-width: var(--breakpoint-lg);
+}
+
+.bg-main-blue {
+    background-color: #040911;
+}
+
+.bg-main-green {
+    background-color: #006D4C;
+}
+
+.bg-yellow-500 {
+    background-color: var(--color-yellow-500);
+}
+
+.bg-secondary-green {
+    background-color: #708238;
+}
+
+.bg-green-dark {
+    background-color: #161D17;
+}
+
+.bg-form-dark {
+  background-color: #121821;
+}
+
+.bg-gradient-green {
+  /* I added the first color (#708238) again at the end for a smoother loop */
+  background-image: linear-gradient(to right, #708238, #006D4C, #708238);
+  
+  /* CRITICAL: Make the background double the size so it can move */
+  background-size: 200% auto;
+  
+  /* CRITICAL: Enable the animation smoothness */
+  transition: background-position 0.5s ease-in-out;
+}
+
+.color-main-green {
+  color: #006D4C;
+}
+.color-main-green-gradient {
+  color: linear-gradient(to right, #708238, #006D4C);
+}
+
+.color-main-green-strong {
+  color: #01553c;
+}
+
+.color-secondary-green {
+  color: #708238;
+}
+
+.text-red {
+  color: #ff0000;
+}
+
+.text-blue-400 {
+  color: var(--color-blue-400);
+}
+
+.text-blue-500 {
+  color: var(--color-blue-500);
+}
+
+.text-blue-600 {
+  color: var(--color-blue-600);
+}
+
+.text-2xl {
+  font-size: var(--text-2xl);
+  line-height: var(--tw-leading, var(--text-2xl--line-height));
+}
+
+.text-3xl {
+  font-size: var(--text-3xl);
+  line-height: var(--tw-leading, var(--text-3xl--line-height));
+}
+
+.hover\:color-main-green-strong {
+    &:hover {
+        @media (hover: hover) {
+        color: #01553c;
+        }
+    }
+}
+
+.md\:hover\:color-main-green-strong {
+    @media (width >= 48rem) {
+      &:hover {
+        @media (hover: hover) {
+          color: #01553c;
+
+        }
+      }
+    }
+}
+
+.hover\:color-main-green {
+    &:hover {
+        @media (hover: hover) {
+        color: #006D4C;
+        font-weight: var(--font-weight-semibold)
+        }
+    }
+}
+
+.md\:hover\:color-main-green {
+    @media (width >= 48rem) {
+      &:hover {
+        @media (hover: hover) {
+          color: #006D4C;
+          font-weight: var(--font-weight-semibold)
+        }
+      }
+    }
+}
+
+.focus\:ring-green-medium {
+    &:focus {
+      --tw-ring-color: #01553c;
+    }
+}
+
+
+.hover\:animate-gradient {
+    &:hover {
+        @media (hover: hover) {
+            background-position: right center;
+        }
+    }
+}
+
+/* 3. Responsive Hover Class (Desktop only): Triggers animation on medium screens+ */
+.md\:hover\:animate-gradient {
+    @media (width >= 48rem) {
+      &:hover {
+        @media (hover: hover) {
+            background-position: right center;
+        }
+      }
+    }
+}
