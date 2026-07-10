@@ -77,7 +77,7 @@
                                     <th scope="col" class="px-6 py-3 font-medium">Name</th>
                                     <th scope="col" class="px-6 py-3 font-medium text-center">Price</th>
                                     <th scope="col" class="px-6 py-3 font-medium text-center">Stock</th>
-                                    <th scope="col" class="px-6 py-3 font-medium">Action</th>
+                                    <th scope="col" class="px-6 py-3 font-medium text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -102,7 +102,7 @@
                                     <td class="px-6 py-4 text-gray-300 text-center">
                                         <?= $row['stock'] ?>
                                     </td>
-                                    <td class="px-6 py-4">
+                                    <td class="px-6 py-4 text-center">
                                         <a href="edit-product.php?id_product=<?= $idProduct ?>" class="font-medium text-[#708238] hover:text-[#8FA348] hover:underline transition-colors">Edit</a> |
                                         <button type='button' id='btnDel' class='font-medium text-fg-danger hover:text-danger hover:underline transition-colors' data-id=<?= $idProduct ?>>Delete</button>
                                     </td>
