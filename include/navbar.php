@@ -29,11 +29,9 @@
                         <ul class='p-2 text-sm text-body font-medium' aria-labelledby='user-menu-button'>
                         <li>";
                         if($_SESSION['role']=="Admin"){
-                            echo "<a href='dashboard.php' class='inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded'>Dashboard</a>";
-                        }elseif($_SESSION['role']=="Mentor"){
-                            echo "<a href='dashboard-mentor.php' class='inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded'>Dashboard</a>";
+                            echo "<a href='dashboard-admin.php' class='inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded'>Dashboard</a>";
                         }else{
-                            echo "<a href='dashboard-student.php' class='inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded'>Dashboard</a>";
+                            echo "<a href='dashboard.php' class='inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded'>Dashboard</a>";
                         }
                         echo "
                         </li>
