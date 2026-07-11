@@ -64,5 +64,39 @@
             echo "window.location = ('../edit-user.php?id_user=".$_POST['id_user']."');";
             echo "</script>";
         }
+    }elseif($flag=="prosesTambahProduk"){
+        // var_dump($_POST);
+		$name=$_POST['name'];
+		$price=$_POST['price'];
+		$stock=$_POST['stock'];
+		$desc=$_POST['desc'];
+
+		$folder= "dist/img";
+		$tmp_name=$_FILES['img']["tmp_name"];
+		$img_name=$_FILES['img']['name'];
+        $img_name_clean = str_replace(' ', '_', $img_name);
+		$img_fix=$folder."/".date('Ymd-His')."PRODUCT-".$img_name_clean;
+
+        // var_dump($tmp_name);
+        // var_dump($img_name);
+        // var_dump($img_fix);
+		move_uploaded_file($tmp_name,"../".$img_fix);
+		
+		$insertQuery=mysqli_query($conn,"INSERT INTO db_maruelectronics.tb_product(product_name,price,stock,`desc`,img)
+                                            VALUES
+                                            ('".$name."','".$price."','".$stock."','".$desc."','".$img_fix."') 
+                                        ") OR die(mysqli_error($conn));
+		if($insertQuery==true){
+			echo "<script>
+                    alert('New product successfully saved!'); 
+                    window.location = ('../dashboard-admin.php'); 
+                  </script>";
+		}else{
+			$safeError = json_encode($e->getMessage());
+            echo "<script>
+                    alert('Failed: ' + $safeError); 
+                    window.history.back();
+                  </script>";
+		}
     }
 ?>
