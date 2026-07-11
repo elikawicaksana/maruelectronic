@@ -26,7 +26,7 @@
             if($_SESSION['role']=='Admin'){
                 header('location:../dashboard-admin.php');
             }else{
-                header('location:../dashboard.php');
+                header('location:../transaction.php');
             }
         }else{
             echo "<script type='text/javascript'>\n";
