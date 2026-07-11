@@ -1435,6 +1435,9 @@
   .h-14 {
     height: calc(var(--spacing) * 14);
   }
+  .h-32 {
+    height: calc(var(--spacing) * 32);
+  }
   .h-56 {
     height: calc(var(--spacing) * 56);
   }
@@ -2044,6 +2047,9 @@
   }
   .border-gray-600 {
     border-color: var(--color-gray-600);
+  }
+  .border-gray-700 {
+    border-color: var(--color-gray-700);
   }
   .border-gray-700\/50 {
     border-color: color-mix(in srgb, oklch(37.3% 0.034 259.733) 50%, transparent);

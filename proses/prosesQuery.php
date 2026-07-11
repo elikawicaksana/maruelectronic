@@ -109,5 +109,31 @@
             $data['message'] = $e->getMessage();
 		}
 		echo json_encode($data);
-	}
+	}else if($flag=="prosesEditProduk"){
+        // var_dump($_POST);
+		$name=$_POST['name'];
+		$price=$_POST['price'];
+		$stock=$_POST['stock'];
+		$desc=$_POST['desc'];
+    
+        $img=$_POST['old_img'];
+        if($_FILES['img_new']['tmp_name']!=""){
+            $folder= "dist/img";
+            $tmp_name=$_FILES['img_new']["tmp_name"];
+            $img_name=$_FILES['img_new']['name'];
+            $img=$folder."/".date('Ymd-His')."PRODUCT-".$img_name;
+            move_uploaded_file($tmp_name,"../".$img);
+        }
+        $updateQuery=mysqli_query($conn,"UPDATE db_maruelectronics.tb_product 
+                                         SET product_name='".$name."',price='".$price."',stock='".$stock."',img='".$img."',`desc`='".$desc."' 
+                                         WHERE id_product='".$_POST['id_product']."'
+                                        ") OR die(mysqli_error($conn));
+        if($updateQuery==true){
+            echo "<script>alert('Product updated!'); window.location='../dashboard-admin.php';</script>";
+        }else{
+            mysqli_rollback($conn);
+            if (!empty($server_upload_path) && file_exists($server_upload_path)) unlink($server_upload_path);
+            echo "<script>alert('Update Failed: " . addslashes($e->getMessage()) . "'); window.history.back();</script>";
+        }
+    }
 ?>
