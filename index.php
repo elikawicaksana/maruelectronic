@@ -111,7 +111,7 @@
         </div>
         <div class="relative z-10 text-center max-w-8xl px-12">
             <h1 class="text-6xl md:text-6xl font-bold text-white leading-tight mb-6 drop-shadow-2xl">
-                Electronics is not just circuits and code; it is the language that turns imagination into intelligent machines and ideas into reality.
+                Electronics is not just circuits and code; <br/> it is the language that turns imagination into intelligent machines and ideas into reality.
             </h1>
         </div>
     </section>

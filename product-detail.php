@@ -37,7 +37,7 @@
     }
     
     $product = mysqli_fetch_assoc($query);
-    $thumbnail = !empty($product['thumbnail']) ? $product['thumbnail'] : 'dist/img/thumbnail.jpg';
+    $img = !empty($product['img']) ? $product['img'] : 'dist/img/thumbnail.jpg';
     $price_formatted = isset($product['price']) ? number_format($product['price'], 0, ',', '.') : '0';
     $stock = isset($product['stock']) ? $product['stock'] : 0; 
     
@@ -49,7 +49,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                 
                 <div class="rounded-xl overflow-hidden bg-black/40 border border-gray-800 flex items-center justify-center p-4">
-                    <img src="<?php echo $thumbnail; ?>" alt="<?php echo htmlspecialchars($product['product_name']); ?>" class="w-full h-auto object-cover max-h-[450px] rounded-lg shadow-xl">
+                    <img src="<?php echo $img; ?>" alt="<?php echo htmlspecialchars($product['product_name']); ?>" class="w-full h-auto object-cover max-h-[570px] rounded-lg shadow-xl">
                 </div>
 
                 <div class="flex flex-col justify-center">
