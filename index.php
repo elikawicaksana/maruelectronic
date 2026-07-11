@@ -69,12 +69,12 @@
                 
                 if(mysqli_num_rows($query) > 0){
                     while($row = mysqli_fetch_array($query)){
-                        $thumbnail = !empty($row['thumbnail']) ? $row['thumbnail'] : 'dist/img/thumbnail.jpg';
+                        $img = !empty($row['img']) ? $row['img'] : 'dist/img/thumbnail.jpg';
                         $price = isset($row['price']) ? number_format($row['price'], 0, ',', '.') : '0';
             ?>
                 <div class="bg-neutral-primary-soft p-6 border border-default shadow-xs flex flex-col justify-between">
                     <a href="product-detail.php?id_product=<?php echo $row['id_product']; ?>">
-                        <img class="mb-6 w-full h-56 object-cover" src="<?php echo $thumbnail; ?>" alt="<?php echo htmlspecialchars($row['product_name']); ?>" />
+                        <img class="mb-6 w-full h-56 object-cover" src="<?php echo $img; ?>" alt="<?php echo htmlspecialchars($row['product_name']); ?>" />
                     </a>
                     <div>
                         <a href="product-detail.php?id_product=<?php echo $row['id_product']; ?>">
