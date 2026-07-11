@@ -98,5 +98,16 @@
                     window.history.back();
                   </script>";
 		}
-    }
+    }elseif($flag=="prosesHapusProduk"){
+		$id_product=$_POST['id_product'];
+		$delQuery=mysqli_query($conn,"DELETE FROM db_maruelectronics.tb_product WHERE id_product='".$id_product."'") OR die(mysqli_error($conn));
+		if($delQuery==true){
+			$data['success'] = "sukses";
+            $data['message'] = "Product data deleted successfully";
+		}else{
+			$data['success'] = "gagal";
+            $data['message'] = $e->getMessage();
+		}
+		echo json_encode($data);
+	}
 ?>

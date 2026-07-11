@@ -196,25 +196,25 @@
     	if(validasi){
 	    	var btn=$(this);
 	    	var id_product=$(this).attr("data-id");
-	    	alert(id_product);
-	    	// var promise=$.ajax({
-	    	// 	url  : 'proses/prosesQuery.php',
-	    	// 	type : 'POST',
-	    	// 	dataType: 'json',
-	    	// 	cache   : false,
-	    	// 	data    : {
-	    	// 		flag  : "prosesHapusProduk",
-	    	// 		id_product : id_product
-	    	// 	},
-	    	// 	success: function(data){
-            //         if(data.success == "sukses"){
-            //             alert("Successfully deleted data!");
-            //             location.reload(); 
-            //         } else {
-            //             alert("Failed to delete data.");
-            //         }
-            //     }
-	    	// });
+	    	// alert(id_product);
+	    	var promise=$.ajax({
+	    		url  : 'proses/prosesQuery.php',
+	    		type : 'POST',
+	    		dataType: 'json',
+	    		cache   : false,
+	    		data    : {
+	    			flag  : "prosesHapusProduk",
+	    			id_product : id_product
+	    		},
+	    		success: function(data){
+                    if(data.success == "sukses"){
+                        alert("Successfully deleted data!");
+                        location.reload(); 
+                    } else {
+                        alert("Failed to delete data.");
+                    }
+                }
+	    	});
 	    }else{
 	    	alert("Be careful!");
 	    }
