@@ -42,26 +42,20 @@
 		}
 		echo json_encode($data);
 	}elseif($flag=="prosesEditUser"){
-        // var_dump($_POST['id_user']);
-        // var_dump($_POST['name']);
-        // var_dump($_POST['username']);
-        // var_dump($_POST['email']);
-        // var_dump($_POST['role']);
-        // var_dump($_POST['fotoLama']);
-        // var_dump($_POST['foto']);
+        // var_dump($_POST);
 
         $editQuery=mysqli_query($conn,"UPDATE db_maruelectronics.tb_user
-                                        SET `name`='".$_POST['name']."',username='".$_POST['username']."',email='".$_POST['email']."',role='".$_POST['role']."' WHERE id_user='".$_POST['id_user']."' 
+                                        SET `name`='".$_POST['name']."',email='".$_POST['email']."',address='".$_POST['address']."' WHERE id_user='".$_POST['id_user']."' 
                                     ") OR die(mysqli_error($conn));
         if($editQuery==true){
             echo "<script type='text/javascript'>\n";
             echo "alert('Successfully edit user information');";
-            echo "window.location = ('../edit-user.php?id_user=".$_POST['id_user']."');";
+            echo "window.location = ('../edit-profile.php');";
             echo "</script>";
         }else{
             echo "<script type='text/javascript'>\n";
             echo "alert('Failed to edit user information');";
-            echo "window.location = ('../edit-user.php?id_user=".$_POST['id_user']."');";
+            echo "window.location = ('../edit-profile.php');";
             echo "</script>";
         }
     }elseif($flag=="prosesTambahProduk"){
