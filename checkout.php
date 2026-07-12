@@ -16,15 +16,9 @@
     $total_amount = 0;
     $item_details = array();
 
-    $user_query = mysqli_query($conn, "SELECT name, email, address FROM db_maruelectronics.tb_user WHERE id_user = '$id_user'");
+    $user_query = mysqli_query($conn, "SELECT `name`, email, `address` FROM db_maruelectronics.tb_user WHERE id_user = '$id_user'");
     $user_data = mysqli_fetch_assoc($user_query);
-   
     $delivery_address = mysqli_real_escape_string($conn, $user_data['address']);
-    $created_at = date('Y-m-d H:i:s');
-
-    mysqli_query($conn, "INSERT INTO db_maruelectronics.tb_order (id_user, total, status, shipping_status, delivery_address, created_at) 
-                         VALUES ('$id_user', '$total_amount', 0, 0, '$delivery_address', '$created_at')");
-    $id_order = mysqli_insert_id($conn);
 
     foreach ($_SESSION['cart'] as $id_product => $quantity) {
         $query = mysqli_query($conn, "SELECT * FROM db_maruelectronics.tb_product WHERE id_product = '$id_product'");
@@ -41,7 +35,8 @@
     }
 
     $created_at = date('Y-m-d H:i:s');
-    mysqli_query($conn, "INSERT INTO db_maruelectronics.tb_order (id_user, total, status, created_at) VALUES ('$id_user', '$total_amount', 0, '$created_at')");
+    mysqli_query($conn, "INSERT INTO db_maruelectronics.tb_order (id_user, total, `status`, shipping_status, delivery_address, created_at) 
+                         VALUES ('$id_user', '$total_amount', 0, 0, '$delivery_address', '$created_at')");
     $id_order = mysqli_insert_id($conn);
 
     foreach ($_SESSION['cart'] as $id_product => $quantity) {
