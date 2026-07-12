@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="dist/img/favicon-96x96.png" sizes="96x96" />
     <link rel="shortcut icon" href="dist/img/favicon.ico" />
     <style>
         .no-scrollbar::-webkit-scrollbar {
@@ -103,8 +102,8 @@
                                         <?= $row['stock'] ?>
                                     </td>
                                     <td class="px-6 py-4 text-center">
-                                        <a href="edit-product.php?id_product=<?= $idProduct ?>" class="font-medium text-[#708238] hover:text-[#8FA348] hover:underline transition-colors">Edit</a> |
-                                        <button type='button' id='btnDel' class='font-medium text-fg-danger hover:text-danger hover:underline transition-colors' data-id=<?= $idProduct ?>>Delete</button>
+                                        <a href="edit-product.php?id_product=<?= $idProduct ?>" class="font-medium text-[#708238] hover:text-[#8FA348] hover:underline transition-colors"><i class="fa-regular fa-pen-to-square"></i> Edit</a> |
+                                        <button type='button' id='btnDel' class='font-medium text-fg-danger hover:text-danger hover:underline transition-colors' data-id=<?= $idProduct ?>><i class="fa-regular fa-trash-can"></i> Delete</button>
                                     </td>
                                 </tr>
                                 <?php 
