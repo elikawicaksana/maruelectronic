@@ -213,6 +213,7 @@
 
         $editQuery=mysqli_query($conn,"UPDATE db_maruelectronics.tb_order
                                         SET shipping_status='".$shipping_status."'
+                                        WHERE id_order='".$_POST['id_order']."'
                                     ") OR die(mysqli_error($conn));
         if($editQuery==true){
             echo "<script type='text/javascript'>\n";
