@@ -135,5 +135,82 @@
             if (!empty($server_upload_path) && file_exists($server_upload_path)) unlink($server_upload_path);
             echo "<script>alert('Update Failed: " . addslashes($e->getMessage()) . "'); window.history.back();</script>";
         }
+    } elseif ($flag == "prosesTambahKeranjang") {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (!isset($_SESSION['id_user'])) {
+            echo "<script>
+                    alert('Access Denied: You must log in first to add items to your cart.'); 
+                    window.location = '../login.php';
+                  </script>";
+            exit;
+        }
+
+        $id_product = isset($_POST['id_product']) ? (int)$_POST['id_product'] : 0;
+        $quantity = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
+
+        if ($id_product > 0 && $quantity > 0) {
+            $cekProduk = mysqli_query($conn, "SELECT * FROM db_maruelectronics.tb_product WHERE id_product = '$id_product'");
+            
+            if (mysqli_num_rows($cekProduk) > 0) {
+                $produk = mysqli_fetch_assoc($cekProduk);
+                $stok_tersedia = $produk['stock'];
+
+                if (!isset($_SESSION['cart'])) {
+                    $_SESSION['cart'] = array();
+                }
+
+                $current_qty_in_cart = isset($_SESSION['cart'][$id_product]) ? $_SESSION['cart'][$id_product] : 0;
+                $total_qty_requested = $current_qty_in_cart + $quantity;
+
+                if ($total_qty_requested > $stok_tersedia) {
+                    echo "<script>
+                            alert('Failed: Requested quantity (" . $total_qty_requested . " units) exceeds available stock (" . $stok_tersedia . " units).'); 
+                            window.history.back();
+                          </script>";
+                } else {
+                    $_SESSION['cart'][$id_product] = $total_qty_requested;
+                    echo "<script>window.location = '../cart.php';</script>";
+                }
+            } else {
+                echo "<script>alert('Failed: Product not found.'); window.history.back();</script>";
+            }
+        } else {
+            echo "<script>alert('Failed: Invalid request.'); window.history.back();</script>";
+        }
+    } elseif ($flag == "prosesUpdateKeranjang") {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        $id_product = isset($_POST['id_product']) ? (int)$_POST['id_product'] : 0;
+        $quantity = isset($_POST['quantity']) ? (int)$_POST['quantity'] : 1;
+
+        if ($id_product > 0 && $quantity > 0) {
+            $cekProduk = mysqli_query($conn, "SELECT stock FROM db_maruelectronics.tb_product WHERE id_product = '$id_product'");
+            if (mysqli_num_rows($cekProduk) > 0) {
+                $produk = mysqli_fetch_assoc($cekProduk);
+                if ($quantity > $produk['stock']) {
+                    echo "<script>alert('Failed: Insufficient stock. Remaining stock: " . $produk['stock'] . "'); window.history.back();</script>";
+                } else {
+                    $_SESSION['cart'][$id_product] = $quantity;
+                    echo "<script>window.location = '../cart.php';</script>";
+                }
+            }
+        } else {
+            echo "<script>alert('Failed: Invalid quantity.'); window.history.back();</script>";
+        }
+
+    } elseif ($flag == "prosesHapusKeranjang") {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        $id_product = isset($_POST['id_product']) ? (int)$_POST['id_product'] : 0;
+        
+        if (isset($_SESSION['cart'][$id_product])) {
+            unset($_SESSION['cart'][$id_product]);
+        }
+        echo "<script>window.location = '../cart.php';</script>";
     }
 ?>

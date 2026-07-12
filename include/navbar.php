@@ -32,7 +32,7 @@
                             echo "<a href='dashboard-admin.php' class='inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded'>Dashboard</a>";
                         }else{
                             echo "<a href='transaction.php' class='inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded'>Transaction</a>";
-                            echo "<a href='dashboard.php' class='inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded'>Cart</a>";
+                            echo "<a href='cart.php' class='inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading rounded'>Cart</a>";
                         }
                         echo "
                         </li>
