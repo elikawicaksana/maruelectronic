@@ -38,7 +38,7 @@
             echo "</script>";
         }
 
-        $limit = 5;
+        $limit = 10;
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $start = ($page > 1) ? ($page * $limit) - $limit : 0;
 
@@ -55,7 +55,7 @@
         include 'include/navbar-dashboard.php';
     ?>
     <div class="p-8 mt-14">
-        <div class="px-48 sm:px-48">
+        <div class="px-36 sm:px-36">
             <div class="w-full mb-24">   
                 <h1 class="text-5xl font-medium text-heading">Welcome back, <?php echo $_SESSION['name']; ?>! 👋</h1><br/><br/>
                 <div class="relative overflow-hidden w-full bg-neutral-primary-soft shadow-xs rounded-base border border-default">
@@ -72,12 +72,12 @@
                     </div>
                     <div class="">
                         <table class="w-full text-sm text-left rtl:text-right text-body" id="tableData">
-                            <thead class="text-sm text-body bg-neutral-secondary-medium border-b border-default-medium">
+                            <thead class="text-sm uppercase text-body bg-neutral-secondary-medium border-b border-default-medium">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3 font-medium">Name</th>
-                                    <th scope="col" class="px-6 py-3 font-medium text-center">Price</th>
-                                    <th scope="col" class="px-6 py-3 font-medium text-center">Stock</th>
-                                    <th scope="col" class="px-6 py-3 font-medium text-center">Action</th>
+                                    <th scope="col" class="px-6 py-3 font-bold">Name</th>
+                                    <th scope="col" class="px-6 py-3 font-bold text-center">Price</th>
+                                    <th scope="col" class="px-6 py-3 font-bold text-center">Stock</th>
+                                    <th scope="col" class="px-6 py-3 font-bold text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -89,17 +89,17 @@
                                 ?>
                                 <tr class="bg-neutral-primary-soft border-b border-default hover:bg-neutral-secondary-medium transition-colors duration-200">
                                     
-                                    <th scope="row" class="flex items-center px-6 py-4 text-heading whitespace-nowrap">
+                                    <th scope="row" class="flex items-center px-6 py-4 text-heading whitespace-nowrap -mr-20">
                                         <img class="w-12 h-8 object-cover rounded-sm ring-1 ring-gray-700" src="<?= $img ?>" alt="<?= $row['product_name'] ?>">
                                         <div class="ps-3">
-                                            <div class="text-base font-semibold text-white max-w-xs truncate" title="<?= $row['product_name'] ?>"><?= $row['product_name'] ?></div>
+                                            <div class="text-base font-semibold text-white max-w-md truncate" title="<?= $row['product_name'] ?>"><?= $row['product_name'] ?></div>
                                         </div>  
                                     </th>
                                     
-                                    <td class="px-6 py-4 text-gray-300 text-center">
+                                    <td class="px-6 py-4 text-gray-300 font-bold text-center">
                                         <?= formatUang($row['price']) ?>
                                     </td>
-                                    <td class="px-6 py-4 text-gray-300 text-center">
+                                    <td class="px-6 py-4 text-gray-300 font-bold text-center">
                                         <?= $row['stock'] ?>
                                     </td>
                                     <td class="px-6 py-4 text-center">
