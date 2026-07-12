@@ -34,7 +34,6 @@
                       </div>';
             } else {
                 while ($order = mysqli_fetch_assoc($query_order)) {
-                    // Penentuan label status
                     if ($order['status'] == 1) {
                         $status_badge = '<span class="bg-green-900/50 text-green-400 border border-green-800 text-xs font-bold px-3 py-1 rounded-full">Paid</span>';
                     } elseif ($order['status'] == 2) {
@@ -51,8 +50,11 @@
                         } elseif ($order['shipping_status'] == 1) {
                             $shipping_badge = '<span class="bg-blue-900/50 text-blue-400 border border-blue-800 text-xs font-bold px-3 py-1 rounded-full ml-2">Shipped</span>';
                             $receive_button = '
-                            <form method="POST" action="update_shipping.php" class="mt-4 border-t border-gray-700 pt-4">
+                            <form method="POST" action="proses/prosesQuery.php" class="mt-4 border-t border-gray-700 pt-4">
+                                <input type="hidden" name="flag" value="prosesUpdatePengiriman">
                                 <input type="hidden" name="id_order" value="'.$order['id_order'].'">
+                                <input type="hidden" name="shipping_status" value="2">
+                                <input type="hidden" name="return_url" value="'.$_SERVER['REQUEST_URI'].'">
                                 <button type="submit" class="w-full bg-moss-light hover:bg-moss-dark text-white font-bold py-2 px-4 rounded-lg transition">
                                     Confirm Order Received
                                 </button>
@@ -90,7 +92,6 @@
                         <h4 class="text-sm font-bold text-gray-300 mb-1">Delivery Address</h4>
                         <p class="text-sm text-gray-400 leading-relaxed">
                             <?php 
-                                // Gunakan htmlspecialchars untuk mencegah eksekusi skrip lintas situs (XSS)
                                 echo !empty($order['delivery_address']) ? htmlspecialchars($order['delivery_address']) : '<span class="italic text-gray-500">Address not recorded for this transaction.</span>'; 
                             ?>
                         </p>

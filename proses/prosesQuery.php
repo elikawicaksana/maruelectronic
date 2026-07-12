@@ -212,5 +212,24 @@
             unset($_SESSION['cart'][$id_product]);
         }
         echo "<script>window.location = '../cart.php';</script>";
+    }elseif($flag=="prosesUpdatePengiriman"){
+        // var_dump($_POST);
+        $shipping_status=$_POST['shipping_status'];
+        $return_url = $_POST['return_url'] ?? 'index.php';
+
+        $editQuery=mysqli_query($conn,"UPDATE db_maruelectronics.tb_order
+                                        SET shipping_status='".$shipping_status."'
+                                    ") OR die(mysqli_error($conn));
+        if($editQuery==true){
+            echo "<script type='text/javascript'>\n";
+            echo "alert('Successfully update shipping status');";
+            echo "window.location.href = '$return_url';";
+            echo "</script>";
+        }else{
+            echo "<script type='text/javascript'>\n";
+            echo "alert('Failed to update shipping status');";
+            echo "window.location.href = '$return_url';";
+            echo "</script>";
+        }
     }
 ?>
