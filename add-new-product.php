@@ -51,7 +51,7 @@
                         <input type="hidden" name="flag" value="prosesTambahProduk">
                         <div class="grid gap-4 mb-4 grid-cols-2 gap-6 mb-5">
                             <div class="col-span-2">
-                                <label for="student-name" class="block mb-2 text-sm font-medium text-heading">Name</label>
+                                <label for="student-name" class="block mb-2 text-sm font-medium text-heading">Nameeee</label>
                                 <input type="text" name="name" id="name" class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-md focus:border-[#708238] focus:ring-1 focus:ring-[#708238] block w-full p-2.5 placeholder:text-body" placeholder="Type product name" required="">
                             </div>
                             <div class="w-full">
